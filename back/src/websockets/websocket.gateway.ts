@@ -8,16 +8,20 @@ import {
   WebSocketServer,
 } from '@nestjs/websockets';
 import { Server, Socket } from 'socket.io';
+import { RoomService } from './room.service';
 
 @WebSocketGateway(3001, { cors: { origin: '*' } })
 export class WebsocketGateway
   implements OnGatewayConnection, OnGatewayDisconnect
 {
+  constructor(private roomService: RoomService) {}
+
   @WebSocketServer()
   public server: Server;
 
   handleConnection(client: Socket) {
     console.log(`client connected: ${client.id}`);
+    this.roomService.findOpenRoom(client.id);
   }
 
   handleDisconnect(client: Socket) {

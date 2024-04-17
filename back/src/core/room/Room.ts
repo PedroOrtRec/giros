@@ -1,20 +1,21 @@
 import { StatusRoom } from './StatusRoom';
 
 export class Room {
-  public id: number;
+  public id: string;
   public status: StatusRoom = StatusRoom.OPEN;
-  private searching = false;
-  public players: string[];
+  private searching = true;
+  public players: string[] = [];
   private timeoutId: NodeJS.Timeout;
 
-  constructor(firstPlayer: string) {
+  constructor(firstPlayer: string, id: string) {
+    this.id = id;
     this.players.push(firstPlayer);
     console.log('Sala creada');
   }
 
   public addPlayer(newPlayer: string) {
     clearTimeout(this.timeoutId);
-    if ((this.status = StatusRoom.OPEN && this.players.length < 4)) {
+    if (this.status === StatusRoom.OPEN && this.players.length < 4) {
       this.players.push(newPlayer);
       console.log(`Se añadió al usuario: ${newPlayer}`);
     } else {
@@ -30,7 +31,7 @@ export class Room {
       this.timeoutId = setTimeout(() => {
         this.searching = false;
         this.closeRoom();
-      }, 5000);
+      }, 10000);
     }
   }
 
