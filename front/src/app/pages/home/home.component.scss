@@ -1,11 +1,18 @@
 //Mi amigo pelu nunca encontrará esto
 
+
+
+body {
+    background-color: grey;
+    
+}
+
 * {
     font-family: sans-serif;
     text-align: center;
 }
 
-.container{
+.container {
     display: flex;
     justify-content: center;
     align-items: center;
@@ -17,11 +24,11 @@ button {
     background: rgb(255, 255, 255);
     color: rgb(0, 0, 0);
     border-radius: 8px;
-    box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2), 0 6px 20px 0 rgba(0,0,0,0.19);
+    box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
     transition-duration: 0.4s;
 }
 
-button:hover{
+button:hover {
     background-color: indigo;
     color: white;
 }
